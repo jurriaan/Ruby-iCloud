@@ -3,7 +3,8 @@ module Cloud
     REQUEST_TYPES = {
       backupd: {client_info: 'com.apple.backupd/(null)', user_agent: 'backupd (unknown version) CFNetwork/609 Darwin/13.0.0'},
       ubd:     {client_info: 'com.apple.ubd/243.6', user_agent: 'ubd/243.6 CFNetwork/609 Darwin/13.0.0'},
-      mobilebackup: {client_info: 'com.apple.backupd/(null)', user_agent: 'MobileBackup/6.0.1 (10A523; iPhone4,1)'}
+      mobilebackup: {client_info: 'com.apple.backupd/(null)', user_agent: 'MobileBackup/6.0.1 (10A523; iPhone4,1)',
+      fmip: {user_agent: 'FindMyiPhone/249 CFNetwork/609 Darwin/13.0.0', client_info: '' }}
     }
     
     attr_reader :headers, :req_type

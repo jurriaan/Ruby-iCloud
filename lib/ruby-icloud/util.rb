@@ -12,7 +12,7 @@ end
 require 'plist'
 #Plist key hack :D
 module Plist
-  class PKey 
+  class PKey
     alias :old_to_ruby :to_ruby
     def to_ruby
       old_to_ruby.to_sym

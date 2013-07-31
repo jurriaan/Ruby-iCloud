@@ -22,18 +22,18 @@ module Cloud
       @features = {}
       update_configuration
     end
-    
+
     def update_configuration
       process ConfigurationRequest
-    end  
-    
+    end
+
     def process request
       request = request.new if request.is_a?(Class) && request.superclass == Cloud::Request
       request.prepare self
-      
-      res = if request.method == :get 
+
+      res = if request.method == :get
         @client.get(request.uri,nil,request.headers)
-      elsif request.method == :post 
+      elsif request.method == :post
         @client.post(request.uri,request.body,request.headers)
       else
         raise NotImplementedError
@@ -43,7 +43,7 @@ module Cloud
       response.process self
       response
     end
-    
+
     def get_uri key
       if @uris.has_key? key
         @uris[key]
@@ -51,15 +51,15 @@ module Cloud
         raise StandardError.new("URI #{key} not found..")
       end
     end
-    
+
     def authorize email, pass
       process AuthenticationRequest.new(email, pass)
       update_configuration
       get_account_settings
     end
-    
+
     def get_account_settings
-      process AccountSettingsRequest
+      @account_settings = process AccountSettingsRequest
     end
   end
 end
