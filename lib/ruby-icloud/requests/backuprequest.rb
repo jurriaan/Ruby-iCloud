@@ -1,7 +1,8 @@
 module RubyiCloud
   class BackupRequest < Request
-    def initialize 
+    def initialize(udid = nil)
       super :backup_dataclass
+      @udid = udid
       @response = BackupResponse
       @method = :get
       @req_type = :backup
@@ -10,14 +11,14 @@ module RubyiCloud
     end
     def prepare client
       super client
-      p @uri
       @uri += "/mbs/" + client.account_info[:dsid]
-      p @uri 
+      if @udid
+        @uri += "/"+@udid
+      end
       token = Util.header_base64("#{client.account_info[:dsid]}:#{client.tokens[:mmeAuthToken]}")
       @headers['Authorization'] = "X-MobileMe-AuthToken #{token}"
       @headers['Accept'] = 'application/vnd.com.apple.mbs+protobuf'
       @headers.delete 'X-MMe-Country'
-      p @headers
     end
   end
 end

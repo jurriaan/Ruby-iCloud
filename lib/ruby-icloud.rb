@@ -14,9 +14,13 @@ require_relative './ruby-icloud/client'
 require_relative './ruby-icloud/response'
 require_relative './ruby-icloud/plistresponse'
 require_relative './ruby-icloud/jsonresponse'
+require_relative './ruby-icloud/protobufresponse'
 require 'pry'
 #binding.pry
 require_relative './ruby-icloud/request'
+Dir[File.join(File.dirname(__FILE__),'ruby-icloud/protodef/**/*.rb')].each do |f|
+  require File.expand_path(f)
+end
 Dir[File.join(File.dirname(__FILE__),'ruby-icloud/responses/**/*.rb')].each do |f|
   require File.expand_path(f)
 end

@@ -27,8 +27,8 @@ module RubyiCloud
       process ConfigurationRequest
     end
 
-    def process request
-      request = request.new if request.is_a?(Class) && request.superclass == RubyiCloud::Request
+    def process request, *args
+      request = request.new(*args) if request.is_a?(Class) && request.superclass == RubyiCloud::Request
       request.prepare self
 
       res = if request.method == :get

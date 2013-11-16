@@ -18,3 +18,15 @@ module Plist
     end
   end
 end
+
+require 'protocol_buffers'
+module ProtocolBuffers
+  class Field
+    class HexField < BytesField
+      def deserialize(value)
+        value.read.unpack('H*')
+      end
+    end
+  end
+end
+

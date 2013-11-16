@@ -1,11 +1,11 @@
 module RubyiCloud
-  class BackupResponse < Response
+  class BackupResponse < ProtoBufResponse
     def parse
-      puts "TODO: figure out the protocol buffers"
+      super(RubyiCloud::ProtocolBuffers::Backups)
     end
     
     def process client
-      p @content
+      
     end
   end
 end
