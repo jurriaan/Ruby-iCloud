@@ -1,7 +1,7 @@
-module Cloud
+module RubyiCloud
   class DefaultResponse < Response
     def parse
-      
+
     end
     def process client
       puts "Default Response!"

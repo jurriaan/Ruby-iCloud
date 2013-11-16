@@ -2,7 +2,7 @@ require 'httpclient'
 require 'tmpdir'
 require 'securerandom'
 
-module Cloud
+module RubyiCloud
   class Client
     attr_reader :tokens, :account_info, :uris, :tokens, :client_id, :features
 
@@ -28,7 +28,7 @@ module Cloud
     end
 
     def process request
-      request = request.new if request.is_a?(Class) && request.superclass == Cloud::Request
+      request = request.new if request.is_a?(Class) && request.superclass == RubyiCloud::Request
       request.prepare self
 
       res = if request.method == :get

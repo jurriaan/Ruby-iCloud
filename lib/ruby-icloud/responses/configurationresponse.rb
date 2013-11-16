@@ -1,4 +1,4 @@
-module Cloud
+module RubyiCloud
   class ConfigurationResponse < PlistResponse
     def initialize resp
       @plist_base = 'urls'

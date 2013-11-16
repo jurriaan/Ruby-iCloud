@@ -1,4 +1,4 @@
-module Cloud
+module RubyiCloud
   class Response
     def initialize response
       @response = response
@@ -6,21 +6,22 @@ module Cloud
       @content = @response.content
       parse
     end
-    
-    def parse 
+
+    def parse
+      p @content
       raise NotImplementedError
     end
-    
+
     def headers
       @response.headers
     end
-    
+
     def status
       @response.status
     end
-    
+
     def content
       @content
-    end    
+    end
   end
 end

@@ -1,6 +1,5 @@
 require 'base64'
-
-module Cloud
+module RubyiCloud
   class Util
     class << self
       def header_base64 input

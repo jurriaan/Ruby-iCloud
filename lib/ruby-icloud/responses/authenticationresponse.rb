@@ -1,4 +1,5 @@
-module Cloud
+module RubyiCloud
+
   class AuthenticationResponse < PlistResponse
     def process client
       client.tokens.merge! @content[:tokens]

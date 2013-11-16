@@ -1,5 +1,5 @@
 require 'plist'
-module Cloud
+module RubyiCloud
   class PlistResponse < Response
     def parse
       @content = Plist::parse_xml(content)

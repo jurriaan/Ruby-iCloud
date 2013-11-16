@@ -1,5 +1,5 @@
 require 'plist'
-module Cloud
+module RubyiCloud
   class AccountSettingsRequest < Request
     def initialize
       super :getAccountSettings
@@ -9,7 +9,7 @@ module Cloud
       @headers['Content-Type'] = 'application/xml'
       @body = {'protocolVersion' => '1.0', 'userInfo' => {'client-id' => nil, 'language' => 'en', 'timezone' => 'Europe/Amsterdam'}}
     end
-    
+
     def prepare client
       @body['userInfo']['client-id'] = client.client_id
       @body = @body.to_plist

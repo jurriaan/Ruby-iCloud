@@ -1,4 +1,4 @@
-module Cloud
+module RubyiCloud
   class ConfigurationRequest < Request
     def initialize req_type = :backupd
       super :configuration
