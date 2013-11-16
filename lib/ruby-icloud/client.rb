@@ -39,7 +39,7 @@ module RubyiCloud
         raise NotImplementedError
       end
       @client.save_cookie_store
-      response = request.response.new res
+      response = request.response.new(res, request)
       response.process self
       response
     end

@@ -1,8 +1,8 @@
 module RubyiCloud
   class ConfigurationResponse < PlistResponse
-    def initialize resp
+    def initialize resp, request
       @plist_base = 'urls'
-      super resp
+      super resp, request
     end
 
     def process client

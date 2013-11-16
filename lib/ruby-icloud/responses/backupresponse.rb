@@ -1,7 +1,7 @@
 module RubyiCloud
   class BackupResponse < ProtoBufResponse
     def parse
-      super(RubyiCloud::ProtocolBuffers::Backups)
+      super(RubyiCloud::ProtocolBuffers::BackupDevices)
     end
     
     def process client

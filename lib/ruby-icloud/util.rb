@@ -24,7 +24,17 @@ module ProtocolBuffers
   class Field
     class HexField < BytesField
       def deserialize(value)
-        value.read.unpack('H*')
+        value.read.unpack('H*').first
+      end
+    end
+    class TimestampField < Field
+      include WireFormats::VARINT
+      def deserialize(value)
+        Time.at(super(value))
+      end
+      
+      def valid_type?(value)
+        value.is_a?(Time)
       end
     end
   end

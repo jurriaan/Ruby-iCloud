@@ -1,7 +1,8 @@
 module RubyiCloud
   class Response
-    def initialize response
+    def initialize response, request = nil
       @response = response
+      @request = request
       @headers = @response.headers
       @content = @response.content
       parse
