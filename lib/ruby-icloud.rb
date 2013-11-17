@@ -1,23 +1,12 @@
-require 'rubygems'
 require 'bundler/setup'
+require './lib/ruby-icloud/util'
+require './lib/ruby-icloud/client'
+require './lib/ruby-icloud/response'
+require './lib/ruby-icloud/plistresponse'
+require './lib/ruby-icloud/jsonresponse'
+require './lib/ruby-icloud/protobufresponse'
+require './lib/ruby-icloud/request'
 
-unless Kernel.respond_to?(:require_relative)
-  module Kernel
-    def require_relative(path)
-      require File.join(File.dirname(caller[0]), path.to_str)
-    end
-  end
-end
-
-require_relative './ruby-icloud/util'
-require_relative './ruby-icloud/client'
-require_relative './ruby-icloud/response'
-require_relative './ruby-icloud/plistresponse'
-require_relative './ruby-icloud/jsonresponse'
-require_relative './ruby-icloud/protobufresponse'
-require 'pry'
-#binding.pry
-require_relative './ruby-icloud/request'
 Dir[File.join(File.dirname(__FILE__),'ruby-icloud/protodef/**/*.rb')].each do |f|
   require File.expand_path(f)
 end

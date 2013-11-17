@@ -1,4 +1,5 @@
-require_relative 'lib/ruby-icloud'
+require './lib/ruby-icloud'
+require 'pry'
 if ARGV.length == 2
   c = RubyiCloud::Client.new
   puts "Authorizing.."
