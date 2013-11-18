@@ -1,20 +1,16 @@
 module RubyiCloud
-  class BackupRequest < Request
-    def initialize(udid = nil)
+  class BackupDevicesRequest < Request
+    def initialize
       super :backup_dataclass
-      @udid = udid
-      @response = BackupResponse
+      @response = BackupDevicesResponse
       @method = :get
       @req_type = :backup
       @headers['X-Apple-MBS-Protocol-Version'] = '1.7'
-
     end
+    
     def prepare client
       super client
-      @uri += "/mbs/" + client.account_info[:dsid]
-      if @udid
-        @uri += "/"+@udid
-      end
+      @uri += "/mbs/" + client.account_info[:dsid] 
       token = Util.header_base64("#{client.account_info[:dsid]}:#{client.tokens[:mmeAuthToken]}")
       @headers['Authorization'] = "X-MobileMe-AuthToken #{token}"
       @headers['Accept'] = 'application/vnd.com.apple.mbs+protobuf'

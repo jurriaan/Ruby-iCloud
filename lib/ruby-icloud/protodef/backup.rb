@@ -12,7 +12,7 @@ module RubyiCloud
       required :string, :version, 2
       required :string, :build, 3
       required :int32, :unknown1, 4
-      required :hex, :unknown, 5
+      required :hex, :unknown, 5 # some important hash?
       required :int32, :unknown2, 6
       required :int32, :unknown3, 7
     end
@@ -32,7 +32,7 @@ module RubyiCloud
       required :string, :variant, 4
       required :string, :model, 5
       required :string, :full_name, 6
-      required :string, :unknown, 7
+      required :string, :unknown, 7 
     end
     
     class Backups < ::ProtocolBuffers::Message
@@ -53,9 +53,9 @@ module RubyiCloud
     end
     
     class FileInfo < ::ProtocolBuffers::Message
-      required :int32, :unknown1, 1
-      required :string, :unknown2, 2
-      required :bytes, :unknown3, 3
+      optional :int32, :unknown1, 1
+      optional :string, :unknown2, 2
+      optional :bytes, :unknown3, 3 # Starts with unknown from deviceinfo, 5 0x00 bytes, 3 random bytes, 0x00000003,0x00000001, 0x000000xx (length of data), data
       required :int32, :unknown4, 4
       required :int32, :unknown5, 5
       required :int32, :unknown6, 6
@@ -65,18 +65,18 @@ module RubyiCloud
       required :timestamp, :ctime, 10
       required :int32, :unknown8, 12
       repeated ::RubyiCloud::ProtocolBuffers::FileAttribute, :attributes, 13
-      required :int32, :unknown9, 14
-      required :int32, :unknown10, 15
+      optional :int32, :unknown9, 14
+      optional :int32, :unknown10, 15
     end
     
     
     class File < ::ProtocolBuffers::Message
-      required :hex, :hex1, 1
+      required :hex, :chunkhash, 1
       required :string, :domain, 2
       required :string, :path, 3
       optional :hex, :hex2, 4
-      required :int32, :unknown, 5
-      required ::RubyiCloud::ProtocolBuffers::FileInfo, :fileinfo, 6
+      required :int64, :size, 5
+      optional ::RubyiCloud::ProtocolBuffers::FileInfo, :fileinfo, 6
       required :timestamp, :date, 7
       required :bool, :bool, 9
     end

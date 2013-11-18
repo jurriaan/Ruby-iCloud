@@ -28,9 +28,9 @@ module RubyiCloud
     end
 
     def process request, *args
-      request = request.new(*args) if request.is_a?(Class) && request.superclass == RubyiCloud::Request
+      request = request.new(*args) if request.is_a?(Class) && request < RubyiCloud::Request
       request.prepare self
-
+      puts request.uri
       res = if request.method == :get
         @client.get(request.uri,nil,request.headers)
       elsif request.method == :post
