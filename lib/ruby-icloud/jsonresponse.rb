@@ -1,8 +1,8 @@
-require 'multi_json'
+require 'json'
 module RubyiCloud
   class JSONResponse < Response
     def parse
-      @content = MultiJson.load(content, symbolize_keys: true)
+      @content = JSON.load(content)
     end
 
     def [](key)

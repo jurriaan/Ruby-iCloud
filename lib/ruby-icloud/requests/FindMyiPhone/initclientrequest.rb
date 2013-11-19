@@ -1,4 +1,3 @@
-require 'multi_json'
 module RubyiCloud
   class InitClientRequest < Request
     def initialize
@@ -31,12 +30,12 @@ module RubyiCloud
       token = Util.header_base64("#{client.account_info[:dsid]}:#{client.tokens[:mmeFMIPToken]}")
       p "#{client.account_info[:dsid]}:#{client.tokens[:mmeFMIPToken]}"
       p token
-      token = '.....'
+      #token = '.....'
       @headers['Authorization'] = "Basic #{token}"
       @headers.delete 'X-MMe-Country'
       @headers.delete 'X-MMe-Client-Info'
       p @headers
-      @body = MultiJson.dump(@body)
+      @body = JSON.dump(@body)
     end
   end
 end

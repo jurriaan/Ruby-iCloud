@@ -24,6 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "coderay", "1.0.9"
   spec.add_dependency 'httpclient', '~> 2.3'
   spec.add_dependency 'plist', '~> 3.1'
-  spec.add_dependency "multi_json", "~> 1.8.2"
   spec.add_dependency 'ruby-protocol-buffers', '~> 1.5.1'
 end
