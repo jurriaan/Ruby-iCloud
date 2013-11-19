@@ -81,5 +81,14 @@ module RubyiCloud
       required :bool, :bool, 9
     end
     
+    class Key < ::ProtocolBuffers::Message
+      required :int32, :index, 1
+      required :bytes, :data, 2
+    end
+    
+    class Keys < ::ProtocolBuffers::Message
+      repeated ::RubyiCloud::ProtocolBuffers::Key, :keySet, 1
+    end
+    
   end
 end
