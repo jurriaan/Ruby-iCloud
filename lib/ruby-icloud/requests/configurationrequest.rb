@@ -1,6 +1,6 @@
 module RubyiCloud
   class ConfigurationRequest < Request
-    def initialize req_type = :backupd
+    def initialize(req_type = :backupd)
       super :configuration
       @response = ConfigurationResponse
       @req_type = req_type

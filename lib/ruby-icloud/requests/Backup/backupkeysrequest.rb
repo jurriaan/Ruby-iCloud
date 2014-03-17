@@ -5,9 +5,9 @@ module RubyiCloud
       @response = BackupKeysResponse
     end
 
-    def prepare client
+    def prepare(client)
       super
-      @uri += "/getKeys"
+      @uri += '/getKeys'
     end
   end
 end

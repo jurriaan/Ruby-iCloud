@@ -6,7 +6,7 @@ module RubyiCloud
       repeated :hex, :udids, 2 # custom type
       optional :bool, :todo, 3 # TODO: figure out meaning of this boolean
     end
-    
+
     class DeviceInfo < ::ProtocolBuffers::Message
       required :string, :name, 1
       required :string, :version, 2
@@ -16,7 +16,7 @@ module RubyiCloud
       required :int32, :unknown2, 6
       required :int32, :unknown3, 7
     end
-    
+
     class Backup < ::ProtocolBuffers::Message
       required :int32, :index, 1
       required :int64, :size, 2
@@ -24,7 +24,7 @@ module RubyiCloud
       required ::RubyiCloud::ProtocolBuffers::DeviceInfo, :device_info, 5
       required :timestamp, :timestamp2, 6
     end
-    
+
     class DeviceType < ::ProtocolBuffers::Message
       required :string, :name, 1
       required :string, :version, 2
@@ -32,9 +32,9 @@ module RubyiCloud
       required :string, :variant, 4
       required :string, :model, 5
       required :string, :full_name, 6
-      required :string, :unknown, 7 
+      required :string, :unknown, 7
     end
-    
+
     class Backups < ::ProtocolBuffers::Message
       required :hex, :udid, 1
       required :int64, :total_size, 2
@@ -42,16 +42,16 @@ module RubyiCloud
       required ::RubyiCloud::ProtocolBuffers::DeviceType, :device_type, 4
       required :timestamp, :creation_time, 5
     end
-    
+
     ## /mbs/$dsid$/$udid$/$id$/listFiles
     # length = Varint.decode(io)
     # file = File.parse(io.read(length))
-    
+
     class FileAttribute < ::ProtocolBuffers::Message
       required :string, :name, 1
-      required :bytes, :value, 2 
+      required :bytes, :value, 2
     end
-    
+
     class FileInfo < ::ProtocolBuffers::Message
       optional :int32, :unknown1, 1
       optional :string, :unknown2, 2
@@ -68,8 +68,7 @@ module RubyiCloud
       optional :int32, :unknown9, 14
       optional :int32, :unknown10, 15
     end
-    
-    
+
     class File < ::ProtocolBuffers::Message
       required :hex, :chunkhash, 1
       required :string, :domain, 2
@@ -80,15 +79,23 @@ module RubyiCloud
       required :timestamp, :date, 7
       required :bool, :bool, 9
     end
-    
+
     class Key < ::ProtocolBuffers::Message
       required :int32, :index, 1
       required :bytes, :data, 2
     end
-    
+
     class Keys < ::ProtocolBuffers::Message
       repeated ::RubyiCloud::ProtocolBuffers::Key, :keySet, 1
     end
-    
+
+    class GetFilesRequest < ::ProtocolBuffers::Message
+      required :hex, :hash, 1
+    end
+
+    class GetFilesResponse < ::ProtocolBuffers::Message
+      required :hex, :hash, 1
+      required :string, :key, 2
+    end
   end
 end

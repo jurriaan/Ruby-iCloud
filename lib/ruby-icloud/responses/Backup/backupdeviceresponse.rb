@@ -3,9 +3,8 @@ module RubyiCloud
     def parse
       super(RubyiCloud::ProtocolBuffers::Backups)
     end
-    
-    def process client
-      
+
+    def process(client)
     end
   end
 end

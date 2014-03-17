@@ -1,6 +1,7 @@
 module RubyiCloud
   class Response
-    def initialize response, request = nil
+    attr_reader :response
+    def initialize(response, request = nil)
       @response = response
       @request = request
       @headers = @response.headers
@@ -10,7 +11,7 @@ module RubyiCloud
 
     def parse
       p @content
-      raise NotImplementedError
+      fail NotImplementedError
     end
 
     def headers

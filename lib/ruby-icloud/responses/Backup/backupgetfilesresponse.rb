@@ -1,11 +1,10 @@
 module RubyiCloud
   class BackupGetFilesResponse < Response
     def parse
-      p @content
+      @content = Util.read_varint_encoded_protobuf(@content, ProtocolBuffers::GetFilesResponse)
     end
-    
-    def process client
-      
+
+    def process(client)
     end
   end
 end

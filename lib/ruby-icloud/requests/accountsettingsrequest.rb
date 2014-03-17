@@ -7,10 +7,10 @@ module RubyiCloud
       @method = :post
       @response = AccountSettingsResponse
       @headers['Content-Type'] = 'application/xml'
-      @body = {'protocolVersion' => '1.0', 'userInfo' => {'client-id' => nil, 'language' => 'en', 'timezone' => 'Europe/Amsterdam'}}
+      @body = { 'protocolVersion' => '1.0', 'userInfo' => { 'client-id' => nil, 'language' => 'en', 'timezone' => 'Europe/Amsterdam' } }
     end
 
-    def prepare client
+    def prepare(client)
       @body['userInfo']['client-id'] = client.client_id
       @body = @body.to_plist
       token = Util.header_base64("#{client.account_info[:dsid]}:#{client.tokens[:mmeAuthToken]}")

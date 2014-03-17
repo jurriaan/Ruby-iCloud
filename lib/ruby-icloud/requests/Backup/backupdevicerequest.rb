@@ -6,9 +6,9 @@ module RubyiCloud
       @udid = udid
     end
 
-    def prepare client
+    def prepare(client)
       super
-      @uri += "/" + @udid
+      @uri += '/' + @udid
     end
   end
 end

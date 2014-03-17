@@ -13,10 +13,10 @@ module RubyiCloud
       @client.set_cookie_store("#{dir}/cookies.bin")
       puts "Storing cookies in #{dir}/cookies.bin" if $DEBUG
       @client.debug_dev = STDERR if $DEBUG
-      #@client.ssl_config.add_trust_ca("apple.pem")
-      @client.ssl_config.verify_mode = OpenSSL::SSL::VERIFY_NONE #TODO: Fix this
+      # @client.ssl_config.add_trust_ca("apple.pem")
+      @client.ssl_config.verify_mode = OpenSSL::SSL::VERIFY_NONE # TODO: Fix this
       @client_id = SecureRandom.uuid
-      @uris = {configuration: 'https://setup.icloud.com/configurations/init?context=settings'}
+      @uris = { configuration: 'https://setup.icloud.com/configurations/init?context=settings' }
       @tokens = {}
       @account_info = {}
       @features = {}
@@ -27,16 +27,16 @@ module RubyiCloud
       process ConfigurationRequest
     end
 
-    def process request, *args
+    def process(request, *args)
       request = request.new(*args) if request.is_a?(Class) && request < RubyiCloud::Request
       request.prepare self
       puts request.uri
       res = if request.method == :get
-        @client.get(request.uri,nil,request.headers)
+              @client.get(request.uri, nil, request.headers)
       elsif request.method == :post
-        @client.post(request.uri,request.body,request.headers)
+              @client.post(request.uri, request.body, request.headers)
       else
-        raise NotImplementedError
+        fail NotImplementedError
       end
       @client.save_cookie_store
       response = request.response.new(res, request)
@@ -44,15 +44,15 @@ module RubyiCloud
       response
     end
 
-    def get_uri key
-      if @uris.has_key? key
+    def get_uri(key)
+      if @uris.key? key
         @uris[key]
       else
-        raise StandardError.new("URI #{key} not found..")
+        fail "URI #{key} not found.."
       end
     end
 
-    def authorize email, pass
+    def authorize(email, pass)
       process AuthenticationRequest.new(email, pass)
       update_configuration
       get_account_settings
