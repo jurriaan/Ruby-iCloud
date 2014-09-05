@@ -4,10 +4,9 @@ Ruby-iCloud
 A Ruby utility/library for connecting to Apple iCloud services
 
 Usage:
-__________________
-
-Clone this repository and simply run `ruby icloud.rb`
-You will be prompted for your iCloud username, then password.
+------------------
+- Clone this repository and simply run `ruby icloud.rb`
+- You will be prompted for your iCloud username, then password.
 
 Currently working:
 ------------------
