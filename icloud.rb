@@ -1,9 +1,11 @@
 require './lib/ruby-icloud'
+require 'io/console'
 require 'pry'
 
 def get_password
   prompt="Password: [typing will be hidden]"
-  `read -s -p "#{prompt}" password; echo $password`.chomp
+  puts prompt
+  STDIN.noecho(&:gets).chomp
 end
 
 def get_username
